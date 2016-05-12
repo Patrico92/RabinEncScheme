@@ -53,8 +53,29 @@ public class RabinCipher {
                             xq.multiply(p).multiply(eAC.getA())
             ).mod(publicKey);
         
-        System.out.println(message);
+        System.out.println("m1: " + message);
         
+        xp = get2ndRoot(xp,p);
+        message = (xp).multiply(q).multiply(eAC.getB()).add( 
+                            xq.multiply(p).multiply(eAC.getA())
+            ).mod(publicKey);
+        System.out.println("m2: " + message);
+        xp = get2ndRoot(xp,p);
+        
+        xq = get2ndRoot(xq,q);
+        message = (xp).multiply(q).multiply(eAC.getB()).add( 
+                            xq.multiply(p).multiply(eAC.getA())
+            ).mod(publicKey);
+        System.out.println("m3: " + message);
+
+        
+        xp = get2ndRoot(xp,p);
+        message = (xp).multiply(q).multiply(eAC.getB()).add( 
+                            xq.multiply(p).multiply(eAC.getA())
+            ).mod(publicKey);
+        System.out.println("m4: " + message);
+
+  
     }
 
     synchronized public void setXp(BigInteger xp) {
@@ -67,6 +88,11 @@ public class RabinCipher {
 
     synchronized public void seteAC(EuclideanAlgorithmCoefficients eAC) {
         this.eAC = eAC;
+    }
+    
+    public BigInteger get2ndRoot(BigInteger root, BigInteger p){
+        BigInteger newRoot = root.multiply(new BigInteger("-1"));
+        return newRoot;
     }
     
 }
