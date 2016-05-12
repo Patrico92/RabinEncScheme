@@ -52,4 +52,19 @@ public class RabinCipherTest {
         System.out.println(ciphertext);
     }
     
+    @Test
+    public void testDecryptMessage() throws FileNotFoundException, IOException, InterruptedException{
+        Properties properties = new Properties();
+        FileReader fileReader = new FileReader("C:\\Users\\Patryk Kozieł\\Documents\\NetBeansProjects\\RabinEncScheme\\src\\rabinencscheme\\keys.properties");
+        properties.load(fileReader);
+        RabinCipher rC = new RabinCipher();
+        rC.decryptCipherText(
+                new BigInteger("12893885"), 
+                new BigInteger(properties.getProperty("p")), 
+                new BigInteger(properties.getProperty("q")),
+                new BigInteger(properties.getProperty("N"))
+        );
+        
+    }
+    
 }

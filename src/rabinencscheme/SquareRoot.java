@@ -27,6 +27,8 @@ public class SquareRoot {
     
     public BigInteger computeSquareRoot(BigInteger a){
         
+        System.out.println("a= " + a);
+        
         BigInteger b = getQuadraticNonResidueModuloP();
         System.out.println("b = " + b);
         computeLandM();
